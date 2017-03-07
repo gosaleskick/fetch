@@ -431,6 +431,7 @@
           headers: parseHeaders(xhr.getAllResponseHeaders() || '')
         }
         options.url = 'responseURL' in xhr ? xhr.responseURL : options.headers.get('X-Request-URL')
+        if (!options.url) options.url = request.url
         var body = 'response' in xhr ? xhr.response : xhr.responseText
         resolve(new Response(body, options))
       }
